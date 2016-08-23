@@ -21,40 +21,9 @@ public class BreakoutGame extends BasicGame {
 
     private Image background;
     private SpriteSheet sheet;
-    private Image player;
-    private Image ball;
+    private Player player;
+    private Ball ball;
     private List<Brick> bricks;
-
-    private class Brick {
-
-        private Image image;
-        private int x, y;
-
-        public Brick(Image image) {
-            this.image = image;
-        }
-
-        public int getX() {
-            return x;
-        }
-
-        public int getY() {
-            return y;
-        }
-
-        public void setX(int x) {
-            this.x = x;
-        }
-
-        public void setY(int y) {
-            this.y = y;
-        }
-
-        public Image getImage() {
-            return image;
-        }
-    }
-
 
     public BreakoutGame(String title) {
         super(title);
@@ -64,8 +33,8 @@ public class BreakoutGame extends BasicGame {
     public void init(GameContainer container) throws SlickException {
         background = new Image(BACKGROUND_SHEET_URL);
         sheet = new SpriteSheet(SPRITE_SHEET_URL, BRICK_WIDTH, BRICK_WIDTH, 8);
-        player = sheet.getSubImage(0, 200, 96, 24);
-        ball = sheet.getSubImage(160, 200, 16, 16);
+        player = new Player(sheet.getSubImage(0, 200, 96, 24));
+        ball = new Ball(sheet.getSubImage(160, 200, 16, 16));
         bricks = initBricks();
     }
 
@@ -93,8 +62,8 @@ public class BreakoutGame extends BasicGame {
     @Override
     public void render(GameContainer container, Graphics g) throws SlickException {
         g.drawImage(background, 0, 0);
-        g.drawImage(player, 200, 200);
-        g.drawImage(ball, 200, 300);
+        g.drawImage(player.getImage(), 200, 200);
+        g.drawImage(ball.getImage(), 200, 300);
 
         for (Brick brick : bricks) {
             g.drawImage(brick.getImage(), brick.getX(), brick.getY());
