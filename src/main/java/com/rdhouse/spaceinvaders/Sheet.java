@@ -15,6 +15,7 @@ public class Sheet {
     static {
         try {
             sheet = new SpriteSheet(SPRITE_STRING, 16, 16);
+            sheet.setImageColor(0, 0, 0);
         } catch (SlickException e) {
             e.printStackTrace();
         }
