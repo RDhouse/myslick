@@ -31,8 +31,12 @@ public class BreakoutGame extends BasicGame {
         background = new Image(BACKGROUND_SHEET_URL);
         sheet = new SpriteSheet(SPRITE_SHEET_URL, 32, 32, 8);
         player = sheet.getSubImage(0, 200, 96, 24);
-        //ball = sheet.getSubImage();
-        //bricks = initBricks();
+        ball = sheet.getSubImage(160, 200, 16, 16);
+        bricks = initBricks();
+    }
+
+    private List<Image> initBricks() {
+        return null;
     }
 
     @Override
@@ -44,6 +48,7 @@ public class BreakoutGame extends BasicGame {
     public void render(GameContainer container, Graphics g) throws SlickException {
         g.drawImage(background, 0, 0);
         g.drawImage(player, 200, 200);
+        g.drawImage(ball, 200, 300);
     }
 
     public static void main(String[] args) {
