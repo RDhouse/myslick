@@ -1,5 +1,6 @@
 package com.rdhouse.mysi;
 
+import org.newdawn.slick.Animation;
 import org.newdawn.slick.Image;
 
 /**
@@ -9,6 +10,7 @@ public class Entity {
 
     private Image image;
     private int x, y;
+    private int speed;
 
     public Entity(Image image) {
         this.image = image;
@@ -32,5 +34,13 @@ public class Entity {
 
     public Image getImage() {
         return image;
+    }
+
+    public int getSpeed() {
+        return speed;
+    }
+
+    public void setSpeed(int speed) {
+        this.speed = speed;
     }
 }

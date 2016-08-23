@@ -15,6 +15,8 @@ public class SpaceInvaders extends BasicGame {
 
     private SpriteSheet spriteSheet;
     private Entity player;
+    private Enemy enemy_one;
+    private Input input;
 
     public SpaceInvaders(String title) {
         super(title);
@@ -23,21 +25,82 @@ public class SpaceInvaders extends BasicGame {
     @Override
     public void init(GameContainer container) throws SlickException {
         spriteSheet = new SpriteSheet(SPRITE_SHEET, 1, 1);
+        input = container.getInput();
+        initPlayer();
+        initEnemy();
+    }
+
+    private void initEnemy() {
+        Image[] images = new Image[2];
+        images[0] = spriteSheet.getSubImage(7, 225, 16, 16);
+        images[1] = spriteSheet.getSubImage(40, 225, 16, 16);
+        enemy_one = new Enemy(images[0]);
+        enemy_one.setX(408);
+        enemy_one.setY(100);
+
+        enemy_one.setAnimation(images, 500);
+    }
+
+    private void initPlayer() {
         player = new Entity(spriteSheet.getSubImage(276, 226, 28, 18));
         player.setX((GAME_WIDTH - player.getImage().getWidth()) / 2);
-        player.setY(GAME_HEIGHT - 150 - 50);
+        player.setY(GAME_HEIGHT - 100 - 50);
+        player.setSpeed(2);
     }
 
     @Override
     public void update(GameContainer container, int delta) throws SlickException {
+        updatePlayer();
+        updateEnemy(delta);
+
+    }
+
+    private void updatePlayer() {
+        // Controls
+        if (input.isKeyDown(Input.KEY_A)) {
+            if (!(player.getX() <= 20)) {
+               player.setX(player.getX() - player.getSpeed());
+            }
+        }
+        if (input.isKeyDown(Input.KEY_D)) {
+            if (!(player.getX() >= GAME_WIDTH - 20 - player.getImage().getWidth())) {
+                player.setX(player.getX() + player.getSpeed());
+            }
+        }
+    }
+
+    private void updateEnemy(int delta) {
+        int speed = 2;
+        if (enemy_one.isLeft()) {
+            if (enemy_one.getX() > 20) {
+                enemy_one.setX(enemy_one.getX() - speed);
+            } else {
+                enemy_one.setLeft(false);
+                enemy_one.setY(enemy_one.getY() + enemy_one.getImage().getHeight());
+            }
+        } else {
+            if (enemy_one.getX() < GAME_WIDTH - 20 - enemy_one.getImage().getWidth()) {
+                enemy_one.setX(enemy_one.getX() + speed);
+            } else {
+                enemy_one.setLeft(true);
+                enemy_one.setY(enemy_one.getY() + enemy_one.getImage().getHeight());
+            }
+        }
+
 
     }
 
     @Override
     public void render(GameContainer container, Graphics g) throws SlickException {
-        g.setColor(Color.green);
-        g.drawLine(0 + 20, GAME_HEIGHT - 150, GAME_WIDTH - 20, GAME_HEIGHT - 150);
+        drawBottomLine(g);
         g.drawImage(player.getImage(), player.getX(), player.getY());
+        g.drawAnimation(enemy_one.getAnimation(), enemy_one.getX(), enemy_one.getY());
+    }
+
+    private void drawBottomLine(Graphics g) {
+        g.setColor(Color.green);
+        g.drawLine(0 + 20, GAME_HEIGHT - 100, GAME_WIDTH - 20, GAME_HEIGHT - 100);
+        g.setColor(Color.white);
     }
 
     public static void main(String[] args) {
