@@ -10,10 +10,15 @@ import org.newdawn.slick.state.StateBasedGame;
  */
 public class Game extends StateBasedGame {
 
+    // Title, Size etc
+    public static final String TITLE = "Space Invaders";
+    public static final int GAME_WIDTH = 800;
+    public static final int GAME_HEIGHT = 600;
+
+    // ID's of all game states.
     public static final int SPLASH_SCREEN = 0;
     public static final int MAIN_MENU = 1;
     public static final int LEVEL = 2;
-    public static final String TITLE = "Space Invaders";
 
     public Game(String name) {
         super(name);
@@ -29,7 +34,7 @@ public class Game extends StateBasedGame {
     public static void main(String[] args) {
         try {
             AppGameContainer gc = new AppGameContainer(new Game(TITLE));
-            gc.setDisplayMode(800, 600, false);
+            gc.setDisplayMode(GAME_WIDTH, GAME_HEIGHT, false);
             gc.setVSync(true);
             gc.start();
         } catch (SlickException e) {
