@@ -26,9 +26,9 @@ public class Game extends StateBasedGame {
 
     @Override
     public void initStatesList(GameContainer container) throws SlickException {
-        addState(new SplashScreen(SPLASH_SCREEN));
-        addState(new SplashScreen(MAIN_MENU));
-        addState(new SplashScreen(LEVEL));
+        this.addState(new SplashScreen(SPLASH_SCREEN));
+        this.addState(new SplashScreen(MAIN_MENU));
+        this.addState(new SplashScreen(LEVEL));
     }
 
     public static void main(String[] args) {

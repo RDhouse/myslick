@@ -1,9 +1,6 @@
 package com.rdhouse.spaceinvaders;
 
-import org.newdawn.slick.GameContainer;
-import org.newdawn.slick.Graphics;
-import org.newdawn.slick.Image;
-import org.newdawn.slick.SlickException;
+import org.newdawn.slick.*;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
@@ -38,6 +35,10 @@ public class SplashScreen extends BasicGameState {
 
     @Override
     public void update(GameContainer container, StateBasedGame game, int delta) throws SlickException {
-
+        if (container.getInput().isKeyPressed(Input.KEY_SPACE)) {
+            System.out.println("Now in splash screen");
+            container.getInput().clearKeyPressedRecord();
+            game.enterState(Game.LEVEL);
+        }
     }
 }
