@@ -17,6 +17,7 @@ public class BreakoutGame extends BasicGame {
     private static final int HEIGHT = 480;
     private static final int NUM_ROWS = 3;
     private static final int NUM_COLS = 15;
+    public static final int BRICK_WIDTH = 32;
 
     private Image background;
     private SpriteSheet sheet;
@@ -62,7 +63,7 @@ public class BreakoutGame extends BasicGame {
     @Override
     public void init(GameContainer container) throws SlickException {
         background = new Image(BACKGROUND_SHEET_URL);
-        sheet = new SpriteSheet(SPRITE_SHEET_URL, 32, 32, 8);
+        sheet = new SpriteSheet(SPRITE_SHEET_URL, BRICK_WIDTH, BRICK_WIDTH, 8);
         player = sheet.getSubImage(0, 200, 96, 24);
         ball = sheet.getSubImage(160, 200, 16, 16);
         bricks = initBricks();
@@ -71,12 +72,12 @@ public class BreakoutGame extends BasicGame {
     private List<Brick> initBricks() {
         List<Brick> bricks = new LinkedList<>();
         int startY = 100;
-        int startX = (WIDTH - (NUM_COLS * 32)) / 2;
+        int startX = (WIDTH - (NUM_COLS * BRICK_WIDTH)) / 2;
         for (int i = 0; i < NUM_ROWS; i++) {
             for (int j = 0; j < NUM_COLS; j++) {
                 Brick brick = new Brick(sheet.getSprite(i, 0));
-                brick.setX(startX + j * 32);
-                brick.setY(startY + i * 32);
+                brick.setX(startX + j * BRICK_WIDTH);
+                brick.setY(startY + i * BRICK_WIDTH);
                 bricks.add(brick);
             }
 
