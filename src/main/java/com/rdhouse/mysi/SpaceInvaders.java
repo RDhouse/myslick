@@ -12,8 +12,10 @@ public class SpaceInvaders extends BasicGame {
     public static final int GAME_HEIGHT = 600;
 
     private static final String SPRITE_SHEET = "./src/main/resources/spaceinvaders/space_invaders_sprites.png";
+    private static final String BACKGROUND = "./src/main/resources/spaceinvaders/spaceinvaders_bg1.png";
 
     private SpriteSheet spriteSheet;
+    private Image background;
     private Entity player;
     private Enemy enemy_one;
     private Input input;
@@ -25,6 +27,7 @@ public class SpaceInvaders extends BasicGame {
     @Override
     public void init(GameContainer container) throws SlickException {
         spriteSheet = new SpriteSheet(SPRITE_SHEET, 1, 1);
+        background = new Image(BACKGROUND);
         input = container.getInput();
         initPlayer();
         initEnemy();
@@ -92,7 +95,9 @@ public class SpaceInvaders extends BasicGame {
 
     @Override
     public void render(GameContainer container, Graphics g) throws SlickException {
+        g.drawImage(background, 0, 0, GAME_WIDTH, GAME_HEIGHT, 0, 216, 512, 835);
         drawBottomLine(g);
+
         g.drawImage(player.getImage(), player.getX(), player.getY());
         g.drawAnimation(enemy_one.getAnimation(), enemy_one.getX(), enemy_one.getY());
     }
