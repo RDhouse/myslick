@@ -48,6 +48,7 @@ public class BreakoutGame extends BasicGame {
                 brick.setX(startX + j * BRICK_WIDTH);
                 brick.setY(startY + i * BRICK_WIDTH);
                 bricks.add(brick);
+
             }
 
         }
