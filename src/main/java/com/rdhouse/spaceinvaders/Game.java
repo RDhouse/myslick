@@ -15,6 +15,12 @@ public class Game extends StateBasedGame {
     public static final int GAME_WIDTH = 800;
     public static final int GAME_HEIGHT = 600;
 
+    // Resource locations
+    public static final String ALL_KEY = "ALL_KEY";
+    private static final String SPRITE_SHEET_ALL = "./src/main/resources/spaceinvaders/space_invaders_sprites.png";
+    public static final String COLORED_KEY = "COLORED_KEY";
+    private static final String SPRITE_SHEET_COLORED = "./src/main/resources/spaceinvaders/spaceinvaders_colored.png";
+
     public Game(String name) {
         super(name);
     }

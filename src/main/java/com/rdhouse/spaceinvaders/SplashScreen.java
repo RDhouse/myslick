@@ -20,13 +20,13 @@ public class SplashScreen extends BasicGameState {
 
     @Override
     public void init(GameContainer container, StateBasedGame game) throws SlickException {
-        splashImage = Sheet.getSheet().getSubImage(172, 0, 231, 168);
+
     }
 
     @Override
     public void render(GameContainer container, StateBasedGame game, Graphics g) throws SlickException {
-        g.drawImage(splashImage, (Game.GAME_WIDTH - splashImage.getWidth()) / 2
-                , (Game.GAME_HEIGHT - splashImage.getHeight()) / 2);
+//        g.drawImage(splashImage, (Game.GAME_WIDTH - splashImage.getWidth()) / 2
+//                , (Game.GAME_HEIGHT - splashImage.getHeight()) / 2);
     }
 
     @Override
