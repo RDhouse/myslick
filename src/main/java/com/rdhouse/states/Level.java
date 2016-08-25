@@ -2,7 +2,6 @@ package com.rdhouse.states;
 
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
-import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
@@ -12,11 +11,7 @@ import org.newdawn.slick.state.StateBasedGame;
  */
 public class Level extends BasicGameState {
 
-    private int ID;
-
-    public Level(int ID) {
-        this.ID = ID;
-    }
+    private static final int ID = Game.LEVEL;
 
     @Override
     public int getID() {
@@ -35,8 +30,6 @@ public class Level extends BasicGameState {
 
     @Override
     public void update(GameContainer container, StateBasedGame game, int delta) throws SlickException {
-        if (container.getInput().isKeyDown(Input.KEY_SPACE)) {
-            game.enterState(Game.SPLASHSCREEN);
-        }
+
     }
 }

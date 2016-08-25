@@ -17,5 +17,5 @@ dependencies {
 task runGame(type: JavaExec) {
     systemProperty 'java.library.path', './lib/native/windows'
     classpath = sourceSets.main.runtimeClasspath
-    main = 'com.rdhouse.mysi.SpaceInvaders'
+    main = 'com.rdhouse.spaceinvaders.Game'
 }

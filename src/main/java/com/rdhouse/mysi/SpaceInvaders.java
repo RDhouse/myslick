@@ -128,7 +128,7 @@ public class SpaceInvaders extends BasicGame {
     public static void main(String[] args) {
         try {
             AppGameContainer gc = new AppGameContainer(new SpaceInvaders(TITLE));
-            gc.setDisplayMode(GAME_WIDTH, GAME_HEIGHT, true);
+            gc.setDisplayMode(GAME_WIDTH, GAME_HEIGHT, false);
             gc.setVSync(true);
             gc.start();
         } catch (SlickException e) {

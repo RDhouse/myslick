@@ -15,20 +15,15 @@ public class Game extends StateBasedGame {
     public static final int GAME_WIDTH = 800;
     public static final int GAME_HEIGHT = 600;
 
-    // ID's of all game states.
-    public static final int SPLASH_SCREEN = 0;
-    public static final int MAIN_MENU = 1;
-    public static final int LEVEL = 2;
-
     public Game(String name) {
         super(name);
     }
 
     @Override
     public void initStatesList(GameContainer container) throws SlickException {
-        this.addState(new SplashScreen(SPLASH_SCREEN));
-        this.addState(new SplashScreen(MAIN_MENU));
-        this.addState(new SplashScreen(LEVEL));
+        this.addState(new SplashScreen());
+        this.addState(new MainMenu());
+        this.addState(new Level());
     }
 
     public static void main(String[] args) {

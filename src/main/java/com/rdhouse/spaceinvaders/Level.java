@@ -11,11 +11,7 @@ import org.newdawn.slick.state.StateBasedGame;
  */
 public class Level extends BasicGameState {
 
-    private final int ID;
-
-    public Level(int ID) {
-        this.ID = ID;
-    }
+    public static final int ID = 2;
 
     @Override
     public int getID() {

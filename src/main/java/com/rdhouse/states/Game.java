@@ -9,8 +9,8 @@ import org.newdawn.slick.state.StateBasedGame;
 public class Game extends StateBasedGame {
 
     // Game state identifiers
-    public static final int SPLASHSCREEN = 0;
-    public static final int MAINMENU = 1;
+    public static final int SPLASH_SCREEN = 0;
+    public static final int MAIN_MENU = 1;
     public static final int LEVEL = 2;
 
     // App properties
@@ -27,9 +27,9 @@ public class Game extends StateBasedGame {
 
     @Override
     public void initStatesList(GameContainer container) throws SlickException {
-        this.addState(new SplashScreen(SPLASHSCREEN));
-        this.addState(new MainMenu(MAINMENU));
-        this.addState(new Level(LEVEL));
+        this.addState(new SplashScreen());
+        this.addState(new MainMenu());
+        this.addState(new Level());
     }
 
     public static void main(String[] args) {

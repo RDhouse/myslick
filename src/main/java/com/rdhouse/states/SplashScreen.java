@@ -9,11 +9,8 @@ import org.newdawn.slick.state.StateBasedGame;
  */
 public class SplashScreen extends BasicGameState {
 
-    private int ID;
+    private static final int ID = Game.SPLASH_SCREEN;
 
-    public SplashScreen(int ID) {
-        this.ID = ID;
-    }
     @Override
     public int getID() {
         return ID;
@@ -32,7 +29,7 @@ public class SplashScreen extends BasicGameState {
     @Override
     public void update(GameContainer container, StateBasedGame game, int delta) throws SlickException {
         if (container.getInput().isKeyDown(Input.KEY_SPACE)) {
-            game.enterState(Game.MAINMENU);
+            game.enterState(Game.MAIN_MENU);
         }
     }
 }
