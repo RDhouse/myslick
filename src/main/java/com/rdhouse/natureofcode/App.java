@@ -48,7 +48,7 @@ public class App extends BasicGame {
     public static void main(String[] args) {
         try {
             AppGameContainer gc = new AppGameContainer(new App(""));
-            gc.setDisplayMode(WIDTH, HEIGHT, true);
+            gc.setDisplayMode(WIDTH, HEIGHT, false);
             gc.setVSync(true);
             gc.start();
         } catch (SlickException e) {
