@@ -4,6 +4,7 @@ version '1.0-SNAPSHOT'
 apply plugin: 'java'
 apply plugin: 'idea'
 
+
 repositories {
     mavenCentral()
 }
@@ -15,7 +16,7 @@ dependencies {
 }
 
 task runGame(type: JavaExec) {
-    systemProperty 'java.library.path', './lib/native/windows'
+    systemProperty 'java.library.path', 'lib/native/windows'
     classpath = sourceSets.main.runtimeClasspath
-    main = 'com.rdhouse.spaceinvaders.Game'
+    main = 'com.rdhouse.natureofcode.App'
 }
