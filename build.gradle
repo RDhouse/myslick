@@ -13,6 +13,8 @@ dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.11'
     // https://mvnrepository.com/artifact/org.slick2d/slick2d-core
     compile group: 'org.slick2d', name: 'slick2d-core', version: '1.0.1'
+    compile 'org.lwjgl.lwjgl:lwjgl:2.9.2'
+    compile 'org.lwjgl.lwjgl:lwjgl-platform:2.9.2'
 }
 
 task runGame(type: JavaExec) {
