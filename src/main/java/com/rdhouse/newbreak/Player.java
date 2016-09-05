@@ -2,6 +2,7 @@ package com.rdhouse.newbreak;
 
 import org.newdawn.slick.Image;
 import org.newdawn.slick.Input;
+import org.newdawn.slick.geom.Vector2f;
 
 /**
  * Created by Sir Royal Air Benny on 25-8-2016.
@@ -18,16 +19,23 @@ public class Player extends Entity {
     public void update() {
         // Controls
         if (input.isKeyDown(Input.KEY_A)) {
-            if(location.x > 0) {
-                // TODO: adjust acceleration.
-                acceleration.x += -0.01f;
-            }
+            acceleration.set(-0.05f, 0f);
+
         }
         if (input.isKeyDown(Input.KEY_D)) {
-            if (location.x + getWidth() < NewBreak.GAME_WIDTH ) {
-                // TODO: adjust acceleration.
-                acceleration.x += 0.01f;
-            }
+            acceleration.set(0.05f, 0f);
+        }
+
+        if(location.x < 0) {
+            // TODO: adjust acceleration.
+            velocity.scale(0);
+            acceleration.add(new Vector2f(0.5f, 0f));
+        }
+
+        if (location.x + getWidth() > NewBreak.GAME_WIDTH ) {
+            // TODO: adjust acceleration.
+            velocity.scale(0);
+            acceleration.add(new Vector2f(-0.5f, 0f));
         }
 
         velocity.add(acceleration);
