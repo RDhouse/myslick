@@ -18,14 +18,20 @@ public class Player extends Entity {
     public void update() {
         // Controls
         if (input.isKeyDown(Input.KEY_A)) {
-            if(getPosition().getX() > 0) {
-                getPosition().sub(getSpeed());
+            if(location.x > 0) {
+                // TODO: adjust acceleration.
+                acceleration.x += -0.01f;
             }
         }
         if (input.isKeyDown(Input.KEY_D)) {
-            if (getPosition().getX() + getWidth() < NewBreak.GAME_WIDTH ) {
-                getPosition().add(getSpeed());
+            if (location.x + getWidth() < NewBreak.GAME_WIDTH ) {
+                // TODO: adjust acceleration.
+                acceleration.x += 0.01f;
             }
         }
+
+        velocity.add(acceleration);
+        acceleration.scale(0);
+        location.add(velocity);
     }
 }

@@ -29,12 +29,13 @@ public class Level extends BasicGameState{
 
         // Player
         player = new Player(spriteSheet.getSubImage(0, 200, 101, 30), container.getInput());
-        player.getPosition().set((NewBreak.GAME_WIDTH - player.getWidth()) / 2, NewBreak.GAME_HEIGHT - player.getHeight() * 2);
-        player.getSpeed().set(2, 0);
+        player.location.x  = (NewBreak.GAME_WIDTH - player.getWidth()) / 2;
+        player.location.y = NewBreak.GAME_HEIGHT - player.getHeight() * 2;
 
         // Ball
         ball = new Ball(spriteSheet.getSubImage(160, 200, 16, 16));
-        ball.getPosition().set(250f, 300f);
+        ball.location.x = 300;
+        ball.location.y = 300;
     }
 
     @Override

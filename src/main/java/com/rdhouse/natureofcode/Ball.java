@@ -27,7 +27,7 @@ public class Ball extends Entity {
         acceleration = dir;
 
         velocity.add(acceleration);
-        velocity.limit(2.5f);
+        velocity.limit(3.5f);
         location.add(velocity);
     }
 

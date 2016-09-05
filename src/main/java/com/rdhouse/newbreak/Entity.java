@@ -10,13 +10,15 @@ public class Entity {
 
     private Image image;
 
-    private Vector2f position;
-    private Vector2f speed;
+    public Vector2f location;
+    public Vector2f velocity;
+    public Vector2f acceleration;
 
     public Entity(Image image) {
         this.image = image;
-        position = new Vector2f();
-        speed = new Vector2f();
+        location = new Vector2f();
+        velocity = new Vector2f();
+        acceleration = new Vector2f();
     }
 
     public Image getImage() {
@@ -25,22 +27,6 @@ public class Entity {
 
     public void setImage(Image image) {
         this.image = image;
-    }
-
-    public Vector2f getPosition() {
-        return position;
-    }
-
-    public void setPosition(Vector2f position) {
-        this.position = position;
-    }
-
-    public Vector2f getSpeed() {
-        return speed;
-    }
-
-    public void setSpeed(Vector2f speed) {
-        this.speed = speed;
     }
 
     public int getWidth() {
@@ -52,6 +38,6 @@ public class Entity {
     }
 
     public void render() {
-        image.draw(position.getX(), position.getY());
+        image.draw(location.x, location.y);
     }
 }
