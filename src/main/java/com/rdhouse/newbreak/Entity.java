@@ -40,4 +40,8 @@ public class Entity {
     public void render() {
         image.draw(location.x, location.y);
     }
+
+    public void update() {
+
+    }
 }
