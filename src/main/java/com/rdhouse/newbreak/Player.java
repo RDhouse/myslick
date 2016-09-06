@@ -1,8 +1,8 @@
 package com.rdhouse.newbreak;
 
-import com.rdhouse.natureofcode.Vector2;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.Input;
+import org.newdawn.slick.geom.RoundedRectangle;
 import org.newdawn.slick.geom.Vector2f;
 
 /**
@@ -17,12 +17,14 @@ public class Player extends Entity {
     private float angle;
 
 
+
     public Player(Image image, Input input) {
         super(image);
         this.input = input;
     }
 
     public void update() {
+
         // Controls
         if (input.isKeyDown(Input.KEY_A)) {
             acceleration.add(new Vector2f(-0.35f, 0f));
@@ -57,6 +59,10 @@ public class Player extends Entity {
         super.render();
     }
 
+    public RoundedRectangle getBounds() {
+        return new RoundedRectangle(location.x, location.y, getWidth() - 3, getHeight() - 4, 16);
+    }
+
     private void applyFriction() {
         float coefficient = 0.01f;
         float normal = 10.0f;
@@ -68,4 +74,6 @@ public class Player extends Entity {
 
         acceleration.add(friction);
     }
+
+
 }

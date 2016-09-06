@@ -26,7 +26,7 @@ public class NewBreak extends StateBasedGame {
     public static void main(String[] args) {
         try {
             AppGameContainer gc = new AppGameContainer(new NewBreak(TITLE));
-            gc.setDisplayMode(GAME_WIDTH, GAME_HEIGHT, false);
+            gc.setDisplayMode(GAME_WIDTH, GAME_HEIGHT, true);
             gc.setVSync(true);
             gc.start();
         } catch (SlickException e) {

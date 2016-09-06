@@ -38,7 +38,7 @@ public class Level extends BasicGameState{
 
         // Ball
         ball = new Ball(SpriteLoader.getSprite(160, 200, 16, 16));
-        ball.location.set(300, 300);
+        ball.location.set(0, 0);
         ball.acceleration.set(-6.5f, 2.0f);
 
         // Bricks
@@ -62,6 +62,16 @@ public class Level extends BasicGameState{
         ball.render();
         for (Brick brick : bricks) {
             brick.render();
+        }
+
+        drawBounds(g);
+    }
+
+    private void drawBounds(Graphics g) {
+        g.draw(player.getBounds());
+        g.draw(ball.getBounds());
+        for (Brick brick : bricks) {
+            g.draw(brick.getBounds());
         }
     }
 

@@ -1,6 +1,7 @@
 package com.rdhouse.newbreak;
 
 import org.newdawn.slick.Image;
+import org.newdawn.slick.geom.Circle;
 
 /**
  * Created by Sir Royal Air Benny on 25-8-2016.
@@ -18,6 +19,7 @@ public class Ball extends Entity {
 
     @Override
     public void update() {
+
         if (location.x < 0 || location.x + getWidth() > NewBreak.GAME_WIDTH) {
             velocity.set(velocity.x * -1, velocity.y);
 
@@ -29,5 +31,9 @@ public class Ball extends Entity {
         velocity.add(acceleration);
         location.add(velocity);
         acceleration.scale(0);
+    }
+
+    public Circle getBounds() {
+        return new Circle(location.x + 8, location.y + 8, 8);
     }
 }

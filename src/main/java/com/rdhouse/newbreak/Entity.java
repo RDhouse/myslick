@@ -6,7 +6,7 @@ import org.newdawn.slick.geom.Vector2f;
 /**
  * Created by Sir Royal Air Benny on 25-8-2016.
  */
-public class Entity {
+public class Entity{
 
     private Image image;
 
