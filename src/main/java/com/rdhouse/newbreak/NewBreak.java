@@ -21,13 +21,15 @@ public class NewBreak extends StateBasedGame {
     @Override
     public void initStatesList(GameContainer container) throws SlickException {
         addState(new Level());
+        addState(new MainMenu());
     }
 
     public static void main(String[] args) {
         try {
             AppGameContainer gc = new AppGameContainer(new NewBreak(TITLE));
-            gc.setDisplayMode(GAME_WIDTH, GAME_HEIGHT, false);
+            gc.setDisplayMode(GAME_WIDTH, GAME_HEIGHT, true);
             gc.setVSync(true);
+            gc.setClearEachFrame(true);
             gc.start();
         } catch (SlickException e) {
             e.printStackTrace();

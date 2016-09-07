@@ -1,15 +1,18 @@
-package com.rdhouse.states;
+package com.rdhouse.newbreak;
 
-import org.newdawn.slick.*;
+import org.newdawn.slick.GameContainer;
+import org.newdawn.slick.Graphics;
+import org.newdawn.slick.Input;
+import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
 /**
- * Created by rutgerd on 23-7-2016.
+ * Created by RDHouse on 7-9-2016.
  */
-public class SplashScreen extends BasicGameState {
+public class MainMenu extends BasicGameState{
 
-    private static final int ID = Game.SPLASH_SCREEN;
+    public static final int ID = 2;
 
     @Override
     public int getID() {
@@ -23,13 +26,14 @@ public class SplashScreen extends BasicGameState {
 
     @Override
     public void render(GameContainer container, StateBasedGame game, Graphics g) throws SlickException {
-        g.drawString("Welcome to myGame", 100, 100);
+
     }
 
     @Override
     public void update(GameContainer container, StateBasedGame game, int delta) throws SlickException {
         if (container.getInput().isKeyDown(Input.KEY_SPACE)) {
-            game.enterState(Game.MAIN_MENU);
+            game.addState(new Level());
+            game.enterState(Level.ID);
         }
     }
 }

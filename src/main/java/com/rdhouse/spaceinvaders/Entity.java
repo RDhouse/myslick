@@ -1,6 +1,5 @@
-package com.rdhouse.mysi;
+package com.rdhouse.spaceinvaders;
 
-import org.newdawn.slick.Animation;
 import org.newdawn.slick.Image;
 
 /**

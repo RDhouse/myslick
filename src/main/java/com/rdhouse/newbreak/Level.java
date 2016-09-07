@@ -22,7 +22,7 @@ public class Level extends BasicGameState{
     private Player player;
     private Ball ball;
 
-    private int rows = 5, cols = 8;
+    private int rows = 5, cols = 9;
     private List<Brick> bricks = new LinkedList<>();
 
 
@@ -83,6 +83,11 @@ public class Level extends BasicGameState{
         ball.update();
         bricks.forEach(Brick::update);
         collisions();
+
+        if (gameOver()) {
+            game.getState(Level.ID).init(container, game);
+            game.enterState(Level.ID);
+        }
     }
 
     private void collisions() {
@@ -122,5 +127,9 @@ public class Level extends BasicGameState{
                 iterator.remove();
             }
         }
+    }
+
+    private boolean gameOver() {
+        return bricks.isEmpty();
     }
 }
