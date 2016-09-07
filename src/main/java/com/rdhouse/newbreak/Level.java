@@ -1,9 +1,13 @@
 package com.rdhouse.newbreak;
 
-import org.newdawn.slick.*;
+import org.newdawn.slick.GameContainer;
+import org.newdawn.slick.Graphics;
+import org.newdawn.slick.Image;
+import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -38,8 +42,8 @@ public class Level extends BasicGameState{
 
         // Ball
         ball = new Ball(SpriteLoader.getSprite(160, 200, 16, 16));
-        ball.location.set(0, 0);
-        ball.acceleration.set(-6.5f, 2.0f);
+        ball.location.set(player.location.x + 50, player.location.y - 50);
+        ball.acceleration.set(1.0f, -10.0f);
 
         // Bricks
         float y = (NewBreak.GAME_HEIGHT - rows * 40) / 2 - 100;
@@ -60,11 +64,9 @@ public class Level extends BasicGameState{
         background.render();
         player.render();
         ball.render();
-        for (Brick brick : bricks) {
-            brick.render();
-        }
+        bricks.forEach(Brick::render);
 
-        drawBounds(g);
+        //drawBounds(g);
     }
 
     private void drawBounds(Graphics g) {
@@ -79,8 +81,46 @@ public class Level extends BasicGameState{
     public void update(GameContainer container, StateBasedGame game, int delta) throws SlickException {
         player.update();
         ball.update();
-        for (Brick brick : bricks) {
-            brick.update();
+        bricks.forEach(Brick::update);
+        collisions();
+    }
+
+    private void collisions() {
+        // Ball with player
+        if (ball.getBounds().intersects(player.getBounds())) {
+            // TODO: angles NOT YET PROPER!
+            float centerPlayer = player.getBounds().getCenterX();
+            float centerBall = ball.getBounds().getCenterX();
+            float diff = Math.abs(centerPlayer - centerBall);
+            System.out.println(diff);
+            System.out.println(ball.velocity.getTheta());
+            if (ball.velocity.getTheta() < 90) {
+                ball.velocity.setTheta(90 + diff);
+            } else {
+                ball.velocity.setTheta(90 - diff);
+            }
+            ball.velocity.y *= -1;
+        }
+        // Ball with bricks
+        for (Iterator<Brick> iterator = bricks.iterator(); iterator.hasNext();) {
+            Brick brick = iterator.next();
+            if (brick.getBounds().intersects(ball.getBounds())) {
+                // decide direction
+                float ballX = ball.getBounds().getCenterX();
+                float ballY = ball.getBounds().getCenterY();
+                float brickMinX = brick.getBounds().getMinX();
+                float brickMinY = brick.getBounds().getMinY();
+                float brickMaxX = brick.getBounds().getMaxX();
+                float brickMaxY = brick.getBounds().getMaxY();
+                if (ballX < brickMinX || ballX > brickMaxX) { // left or right side of brick
+                    ball.velocity.x *= -1;
+                }
+                if (ballY < brickMinY || ballY > brickMaxY) { // top or bottom side of brick
+                    ball.velocity.y *= -1;
+                }
+                // remove brick from list
+                iterator.remove();
+            }
         }
     }
 }

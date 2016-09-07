@@ -8,13 +8,12 @@ import org.newdawn.slick.geom.RoundedRectangle;
  */
 public class Brick extends Entity {
 
-
     public Brick(Image image) {
         super(image);
-
     }
 
     public void update() {
+
     }
 
     public void render() {

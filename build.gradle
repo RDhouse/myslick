@@ -20,5 +20,5 @@ dependencies {
 task runGame(type: JavaExec) {
     systemProperty 'java.library.path', 'lib/native/windows'
     classpath = sourceSets.main.runtimeClasspath
-    main = 'com.rdhouse.natureofcode.App'
+    main = 'com.rdhouse.newbreak.NewBreak'
 }

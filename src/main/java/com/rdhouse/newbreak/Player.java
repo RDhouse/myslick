@@ -13,10 +13,6 @@ import org.newdawn.slick.geom.Vector2f;
 public class Player extends Entity {
 
     private Input input;
-    public float mass = 10;
-    private float angle;
-
-
 
     public Player(Image image, Input input) {
         super(image);
